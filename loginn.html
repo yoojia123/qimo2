@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>烟熏三文鱼可颂</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('images/background.jpg') no-repeat center center;
+            background-size: 60%; /* 背景图缩小到 60% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #522d21; /* 背景颜色作为补充 */
+        }
+        .container {
+            display: flex;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 90%; /* 宽度略小于全屏 */
+            max-width: 1200px; /* 最大宽度 */
+            min-height: 600px; /* 最小高度 */
+        }
+        .pizza-images {
+            position: relative;
+            width: 50%; /* 左半部分 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #d14f34; /* 设置背景颜色 */
+        }
+        .main-image-container {
+            width: 100%; /* 占满左侧宽度 */
+            height: 100%; /* 维持容器的高度一致 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main-image {
+    width: 80%;
+    height: 500px; /* 这里放大高度为 500px */
+    object-fit: contain;
+    display: block;
+}
+
+        .small-images {
+            position: absolute;
+            bottom: 10%; /* 在大图片底部偏上 */
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            width: 100%; /* 占据整个容器宽度 */
+            background: transparent; /* 设置为透明背景 */
+        }
+        .small-images img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border: none; /* 移除边框 */
+            background: transparent; /* 背景透明 */
+            transition: transform 0.3s ease;
+        }
+        .small-images img:hover {
+            transform: scale(1.1); /* 放大效果 */
+        }
+            
+
+
+
+
+        .pizza-details {
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: transparent;
+}
+
+nav {
+    margin-bottom: 30px;
+}
+
+nav a {
+    margin-right: 8px;
+    text-decoration: none;
+    color: #666;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+.price {
+    color: #ff4d4d;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.rating {
+    color: #999;
+    margin-bottom: 30px;
+}
+
+.stars {
+    color: #ffcc00;
+}
+
+.product-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.product-options div {
+    flex: 1;
+    min-width: 150px;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    font-size: 1em;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.quantity-selector button {
+    background: transparent;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.2s ease;
+}
+
+.quantity-selector button:hover {
+    transform: scale(1.1);
+}
+
+.quantity {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    min-width: 40px;
+}
+
+.add-to-cart {
+    background-color: #ffcc00;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 20px; /* 增加与上方容器的间距 */
+}
+
+.jia {
+    background-color: #ffcc00;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.jia:hover {
+    background-color: #ff9900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+}
+.add-to-cart:hover {
+    background-color: #ff9900;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+}
+    </style>
+</head>
+<body>
+ 
+    <div class="container">
+        <!-- 左侧图片区域 -->
+        <div class="pizza-images">
+            <!-- 大图片容器 -->
+            <div class="main-image-container">
+                <!-- 大图，固定尺寸 -->
+                <img src="images/bread3.png" alt="Mexican Pizza Small" class="main-image" id="mainImage" data-large="images/bread3.png">
+            </div>
+            <!-- 小图片 -->
+            <div class="small-images">
+                <img src="images/bread3.png" alt="Mexican Pizza Small" data-large="images/bread3.png">
+                <img src="images/Bread3-1.png" alt="10 inch Small" data-large="images/Bread3-1.png">
+                <img src="images/Bread3-2.png" alt="12 inch Small" data-large="images/Bread3-2.png">
+            </div>
+        </div>
+        <!-- 右侧内容区域 -->
+        <div class="pizza-details">
+          <nav>
+              <a href="#">主页</a> - 
+              <a href="#">搜索</a> - 
+              <a href="#">商品详情</a>
+          </nav>
+          <h1>烟熏三文鱼可颂</h1>
+          <p class="price">$15</p>
+          <div class="rating">
+              4.9 <span class="stars">★★★★★</span> (200)
+          </div>
+          <div class="product-options">
+              <div class="size-selector">
+                  <label for="size">选择大小</label>
+                  <select id="size">
+                      <option value="10">5cm</option>
+                      <option value="12">8cm</option>
+                      <option value="14">12cm</option>
+                  </select>
+              </div>
+              <div class="crust-selector">
+                  <label for="crust">是否加热</label>
+                  <select id="crust">
+                      <option value="default">是</option>
+                      <option value="default1">否</option>
+                  </select>
+              </div>
+          </div>
+          <div class="quantity-selector">
+              <button class="decrease">-</button>
+              <span class="quantity">1</span>
+              <button class="increase">+</button>
+          </div>
+          <button class="add-to-cart">Add to Cart</button>
+          <button class="add-to-cart"><a href="search.html" class="jia">返回</a></button>
+      </div>
+    <script>
+        // JavaScript 实现小图片悬停切换大图片
+        const mainImage = document.getElementById('mainImage');
+        const thumbnails = document.querySelectorAll('.small-images img');
+
+        thumbnails.forEach((thumbnail) => {
+            thumbnail.addEventListener('mouseover', () => {
+                const largeImage = thumbnail.getAttribute('data-large');
+                mainImage.src = largeImage; // 更新大图片的 src
+            });
+        });
+    </script>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+      const decreaseBtn = document.querySelector('.decrease');
+      const increaseBtn = document.querySelector('.increase');
+      const quantitySpan = document.querySelector('.quantity');
+  
+      decreaseBtn.addEventListener('click', function() {
+          let quantity = parseInt(quantitySpan.textContent);
+          if (quantity > 1) {
+              quantitySpan.textContent = quantity - 1;
+          }
+      });
+  
+      increaseBtn.addEventListener('click', function() {
+          quantitySpan.textContent = parseInt(quantitySpan.textContent) + 1;
+      });
+  });</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="stye.css"> <!-- 修复拼写 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body class="loginbody">
+  
+  <header>
+    <a href="#" class="logo">Bread</a>
+    <ul>
+      <li><button id="home-button"><img src="images\wanshengjie.png" alt="Home"></button></li>
+      <li><a href="search.html"  >搜索</a></li>
+      <li><a href="about.html" >关于我们</a></li>
+      <li><a href="" class="active">登录</a></li>
+    </ul>
+  </header>
+ <!-- 音乐播放 -->
+ <audio id="music" src="images\Joker工作室 - The Cursed Sun.ogg" preload="auto"></audio>
+  
+ <!-- 彩带效果 -->
+ <div id="confetti"></div>
+  <section class="sectionlogin">
+    <div class="form-box">
+      <div class="form-value">
+        <form id="loginForm">
+          <h2>LOGIN</h2>
+          <div class="inputbox">
+            <ion-icon name="people-outline"></ion-icon>
+            <input type="text" id="userId" placeholder="id" required>
+            <label for="userId">id</label>
+          </div>
+          <div class="inputbox">
+            <ion-icon name="lock-closed-outline"></ion-icon>
+            <input type="password" id="password" placeholder="password" required>
+            <label for="password">password</label>
+          </div>
+          <div class="forget">
+            <label for=""><input type="checkbox">비밀번호 기억하기</label>
+          </div>
+          <button type="submit" id="login-btn">login</button>
+          <div class="register">
+            <p><a href="">등기</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  </section>
+  <div id="bottom-area"></div>
+  <script src="script.js"></script>
+      
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  
+  <script>
+   function falling() {
+  const icons = [
+    'images/北北素材 (2).svg', // 确保路径正确
+    
+    'images/北北素材 (114).svg',
+    'images/北北素材 (125).svg',
+    'images/北北素材 (195).svg',
+    'images/北北素材 (293).svg',
+    'images/北北素材 (477).svg',
+    'images/北北素材 (497).svg',
+    'images/北北素材 (574).svg',
+    'images/北北素材 (716).svg',
+    'images/北北素材 (717).svg'
+    
+  ];
+
+  let item = document.createElement("div");
+  item.classList.add("item");
+
+  let iconPath = icons[Math.floor(Math.random() * icons.length)];
+  let img = document.createElement('img');
+  img.src = iconPath;
+  img.style.width = "40px"; // 统一大小
+  img.style.height = "40px";
+  img.style.transform = `rotate(${Math.random() * 360}deg)`; // 随机旋转
+  item.appendChild(img);
+
+  item.style.left = `${Math.random() * window.innerWidth}px`;
+  item.style.top = "0px";
+  document.body.appendChild(item);
+
+  // 碰撞检测
+  let interval = setInterval(() => {
+    // 获取当前图标和 `xiaodangao` 的位置
+    const itemRect = item.getBoundingClientRect();
+    const xiaodangaoRect = hoverImage.getBoundingClientRect();
+
+    // 碰撞检测
+    if (
+      itemRect.bottom > xiaodangaoRect.top &&
+      itemRect.top < xiaodangaoRect.bottom &&
+      itemRect.right > xiaodangaoRect.left &&
+      itemRect.left < xiaodangaoRect.right
+    ) {
+      // 如果发生碰撞，添加消失动画效果（缩放 + 淡出）
+      item.style.animation = "fadeOut 1s forwards";
+      
+      // 1秒后移除图标
+      setTimeout(() => {
+        item.remove();
+      }, 1000);
+      
+      clearInterval(interval); // 停止碰撞检测
+    }
+  }, 30); // 每 30ms 检测一次
+
+  // 动画结束后堆积到底部
+  item.addEventListener("animationend", () => {
+    clearInterval(interval); // 停止碰撞检测
+    item.style.animation = "none";
+    item.style.transform = "translateY(calc(100vh - 40px))";
+    item.style.left = `${Math.random() * (window.innerWidth - 40)}px`;
+  });
+}
+
+// 鼠标悬停事件
+const bottomArea = document.getElementById('bottom-area');
+const hoverImage = document.createElement('img');
+hoverImage.id = 'hover-image';
+hoverImage.src = './images/xiaodangao.png';
+hoverImage.style.position = 'fixed';
+hoverImage.style.bottom = '120px'; // 图片初始位置
+hoverImage.style.left = '50%';
+hoverImage.style.transform = 'translateX(-50%)';
+hoverImage.style.width = '100px';
+hoverImage.style.height = 'auto';
+hoverImage.style.display = 'none'; // 默认隐藏
+document.body.appendChild(hoverImage);
+
+// 监听鼠标移动，更新图片位置
+bottomArea.addEventListener('mousemove', (e) => {
+  hoverImage.style.left = `${e.pageX - hoverImage.width / 2}px`; // 图片水平跟随鼠标
+});
+
+// 显示图片：鼠标进入底部区域
+bottomArea.addEventListener('mouseenter', () => {
+  hoverImage.style.display = 'block'; // 显示图片
+});
+
+// 隐藏图片：鼠标离开底部区域
+bottomArea.addEventListener('mouseleave', () => {
+  hoverImage.style.display = 'none'; // 隐藏图片
+});
+
+// 定时生成下落元素
+setInterval(() => {
+  falling();
+}, 2000);
+  </script>
+  <script>
+    document.getElementById("home-button").addEventListener("click", function() {
+     var music = document.getElementById("music");
+   
+     // 如果音乐正在播放，暂停它；如果没有播放，则播放它
+     if (music.paused) {
+       music.play();  // 播放音乐
+       triggerConfetti();  // 展示彩带效果
+     } else {
+       music.pause();  // 暂停音乐
+     }
+   });
+   
+   function triggerConfetti() {
+     var confettiContainer = document.getElementById("confetti");
+     confettiContainer.style.display = "block";
+   
+     // 生成彩带小片段
+     for (let i = 0; i < 100; i++) {
+       let confettiPiece = document.createElement("div");
+       confettiPiece.classList.add("confetti-piece");
+       confettiPiece.style.left = Math.random() * 100 + "%"; // 随机位置
+       confettiPiece.style.animationDuration = Math.random() * 2 + 2 + "s"; // 随机落下时间
+       confettiContainer.appendChild(confettiPiece);
+     }
+   
+     
+   }
+   
+   
+   </script>
+</body>
+</html>

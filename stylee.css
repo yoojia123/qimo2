@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    /* 当用户手动导航或者 CSSOM scrolling API 触发滚动操作时 */
+    scroll-behavior: smooth; 
+  }
+  
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(#ffc064,#ffd495);
+   
+  }
+  
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+  }
+  
+  header .logo {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: capitalize; /* 首字母大写 */
+    letter-spacing: 2px; /* 字符间距 */
+  }
+  
+  header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  header ul li {
+    list-style: none;
+    margin-left: 20px;
+    color: #fff;
+  }
+  
+  
+  header ul li a {
+          text-decoration: none;
+          padding: 6px 15px;
+          color: #fff;
+          border-radius: 20px;
+        }
+  
+  header ul li a:hover,
+  header ul li a.active {
+    background: #fff;
+    color: #ffc064;
+  }
+    .products-section {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: transparent;
+    }
+    
+    .sidebar {
+    width: 250px;
+    padding: 20px;
+    }
+    
+    .sidebar h2, .sidebar h3 {
+    margin-bottom: 10px;
+    }
+    
+    .sidebar ul {
+    list-style-type: none;
+    margin-bottom: 20px;
+    }
+    
+    .products-container {
+    flex-grow: 1;
+    padding-left: 20px;
+    }
+    
+    .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    }
+    
+    .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    }
+    
+    .product-card {
+    background-color: #fff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .product-card img {
+    width: 100%;
+    height: auto;
+    max-width: 150px;
+    margin-bottom: 10px;
+    }

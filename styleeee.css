@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Sriracha&display=swap");
+
+:root {
+  --width: min(1000px, 80vw);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Sriracha", cursive;
+}
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #68f3c7;
+  transition: 0.6s;
+}
+
+.active .page {
+  filter: blur(20px);
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-content {
+  max-width: var(--width);
+}
+
+h2 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+a {
+  padding: 5px 20px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #111;
+  transition: 0.3s;
+}
+
+a:hover {
+  filter: brightness(200%);
+}
+
+a:active {
+  filter: brightness(100%);
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -40%);
+  background-color: #fff;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  display: none;
+  animation-duration: 0.8s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-name: shrink;
+}
+
+.active .modal {
+  display: block;
+  animation-name: expand;
+}
+
+.modal-content {
+  width: var(--width);
+  max-height: 90vh;
+  padding: 50px;
+  margin: auto;
+  /* center overflow content */
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-content h2 {
+  color: inherit;
+}
+
+.active .modal-content {
+  overflow-y: auto;
+}
+
+@keyframes expand {
+  0% {
+    width: 0;
+    max-height: 0;
+    color: transparent;
+  }
+  40% {
+    width: 6px;
+    color: transparent;
+  }
+  100% {
+    width: var(--width);
+    max-height: 100vh;
+    color: inherit;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    width: var(--width);
+    max-height: 100vh;
+    color: inherit;
+  }
+  60% {
+    width: 6px;
+    color: transparent;
+  }
+  100% {
+    width: 0;
+    max-height: 0;
+    color: transparent;
+  }
+}

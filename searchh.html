@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Search</title>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Boxicon -->
+   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+   <!-- Swiper Js -->
+   <link
+   rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+   
+ />
+ <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/atropos/css/atropos.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/atropos"></script>
+
+</head>
+<style>
+    
+
+
+
+    
+
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    
+}
+html{
+    font-size: 63%;
+   
+}
+:root{
+    --main-color:tomato;
+    --text-color:gray;
+    --white-color:#ffffff;
+}
+  body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #cb5c41;
+ 
+ 
+}
+
+
+
+@font-face {
+    font-family: "iconfont";
+    src: url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAKsAAsAAAAABnAAAAJeAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAp8gRgBNgIkAwgLBgAEIAWEbQcwG74FEdWTB2Q/DuyY8FcY0Z8Dxdjg34Pn37W3+5LMb0qoAFARg6qrQ14wdv8cv+DJEUhAt3rM2ozizqgIRZOMB/9VUzbQw+RyXwLAiMNp87wLZP55l8sYg8aaNKmL4jiQAhxrUWRFEnnD2AUu4TgECCKRfKSppWsIi8EaJ4Bsra/OY3NeDIYlLIKvZqlBbnGw6ky9hJvw+/K7VCwoHI1V0rfSvETdt0I7Re96u0z5BHwgoNUOoIF8wIAM1UZ70Aija4KihlTYV6HAt8zzfAuyVyPC/jorPwSAeCi6J7EruVVuBYCB7pAK1I66DXRQSMjOw92YmAfncSPv7XfvRt+8GX79eujt25FIkBVAPryltjj3cfLjfy+Snz971t7+ol0duO6BOlR+VwU013/AJ6kbh9r99cv15Bq2aDf9HeoA8HYNehcBBCrCyh7Nhlf9t8EGgE8hozuU9LOD3b9N4D+JezYYXWqZlVHFtUlFKvr8ZUEEAR7YGcXXsbrYm0oKlthbsweQkEJjSScaaj4cgimHD0stgsijdXUw0WyjERMI5HIEIETghyKMZ9BE8IpoqF/gEMdf+IgQjSBGJHrLYDJFW1yjojOM1P9pGeRkx2ouKrxhCnunWWnIeEH9EqAyK4qJFid0jhn+M1VmTKxyUANOw74LXSorBstms6vOc657UzbIEbmoUdEZRur/tAxyst/eXOnzN0xh77Slrsb7gvqldyqzogexVZ296u7lFf+ZKjMmVjmoAYOw70JX/aAVg2XziPBV53Yz7qvK1tccX7cDCIosvYrtfmnk8xJ8kCgCAAAA') format('woff2');
+}
+
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 20px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sousuo:before {
+    content: "\e62e";
+}
+
+.search-box {
+    display: flex;
+    justify-content: flex-start; /* 搜索框居左 */
+    align-items: center;
+    gap: 1rem; /* 搜索框内部间距 */
+}
+
+.key {
+    /* flex布局中本区域的缩放比例为1份 */
+    flex-shrink: 1;
+    flex-grow: 1;
+    /* background-color: violet; */
+}
+
+.key input {
+    width: calc(100% - 40px);
+    height: 40px;
+    padding: 0 20px;
+    font-size: 18px;
+    color: #fff;
+    /* 边框背景为空 */
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.key input:focus {
+    border: none;
+    outline: none;
+}
+
+.key input::-webkit-input-placeholder {
+    /* 提示文字的样式 */
+    color: #f9f9f9;
+}
+
+.bt {
+    /* flex布局中本区域的缩放比例为0份，不缩放，保持原有大小 */
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    /* 搜索图标居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bt a {
+    padding: 10px;
+    border-radius: 100%;
+    text-decoration: none;
+    color: #fff;
+    /* background-color: violet; */
+    transition: 0.5s;
+}
+
+.search-box.active {
+    width: 300px;
+}
+
+.search-box.active .bt a {
+    background-color: var(--background-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.menu {
+    display: grid; /* 使用 CSS Grid 布局 */
+    grid-template-columns: 1fr 2fr; /* 左侧 1/3，右侧 2/3 */
+    column-gap: 2rem; /* 左右两部分之间的间距 */
+    background-image: url('images/zhongjianbeijn.jpg');
+}
+.menu-left {
+    grid-column: 1 / 2;
+    /* 可以放其他内容，也可以留空 */
+}
+
+.menu-right {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* 搜索框与产品内容之间的间距 */
+}
+
+.heading-text{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.heading-text p {
+    font-size: 1.5rem;
+}
+#menu{
+    width: 100%;
+    padding: 12rem 7% 3rem;
+}
+
+span{
+    color: var(--main-color);
+}
+
+.menu-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 每行三个产品 */
+    gap: 2rem; /* 产品之间的间距 */
+}
+.menu-content .product-box {
+    border: 1px solid rgb(200, 200, 200); /* 边框浅灰色更简洁 */
+    border-radius: 20px; /* 边角更圆润 */
+    padding: 1.5rem; /* 内边距适中 */
+    position: relative;
+    background: #f9f9f9; /* 添加背景色 */
+    height: 330px; /* 控制高度一致 */
+}
+
+.menu-content .product-box .product-img {
+    width: 100%;
+    height: 180px; /* 图片高度适中 */
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.menu-content .product-box .product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 确保图片按比例裁剪 */
+    transition: 0.3s ease-in-out; /* 缩放更平滑 */
+}
+
+.menu-content .product-box:hover .product-img img {
+    transform: scale(1.1); /* 图片轻微放大 */
+}
+
+.menu-content .product-box .product-name {
+    font-size: 1.6rem; /* 标题更小，适配盒子尺寸 */
+    font-weight: 600;
+    color: #333;
+    margin-top: 1rem;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-content .product-box:hover .product-name {
+    color: #ff6347; /* 鼠标悬停时文字变亮 */
+}
+
+.menu-content .product-box .product-description {
+    font-size: 1.2rem;
+    color: #777;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+
+.menu-content .product-box .addToSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.menu-content .product-box .addToSection .price {
+    font-size: 1.8rem; /* 价格适中 */
+    font-weight: 700;
+    color: #000;
+}
+
+.menu-content .product-box .addToSection .cart-icon a {
+    width: 50px;
+    height: 50px;
+    background: #ff6347;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 2rem;
+    transition: background 0.3s ease;
+}
+
+.menu-content .product-box .addToSection .cart-icon a:hover {
+    background: #333; /* 鼠标悬停时图标背景色 */
+}
+
+
+.menu-content .product-box .addToSection .cart-icon .popup{
+    color: var(--white-color);
+    background: #000;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 14px;
+    border-radius: 50px;
+    gap: 0.5rem;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    opacity: 0;
+    transition: .5s;
+}
+
+.menu-content .product-box .addToSection .cart-icon:hover .popup{
+    opacity: 1;
+    transform: translateY(-50px);
+}
+
+.menu-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem; /* 默认值 */
+}
+
+/* 针对小屏幕设备的样式 */
+@media (max-width: 768px) {
+    .menu-next {
+        margin-bottom: 1rem; /* 在小屏幕上减少外边距 */
+    }
+}
+
+.menu-next button{
+    border-radius: 6px;
+    padding: 20px;
+    height: 50px;
+}
+
+.menu-next p{
+    font-size: 22px;
+}
+
+
+
+
+
+
+.menu-left {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin-top: 50px; /* 整体向下移动 */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 两个框之间的间距 */
+    width: 250px; /* 整体宽度控制 */
+}
+
+/* 第一个框样式 */
+.filter-box {
+    background-color: #f9f9f9; /* 浅灰色背景 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.filter-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    margin-bottom: 20px;
+}
+
+.filter-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.filter-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-section ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.filter-section ul li label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-section ul li input {
+    margin-right: 5px;
+}
+
+.price-slider {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.price-slider input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+.price-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    background: #ff6666;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.price-slider input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+}
+
+#price-range {
+    font-size: 14px;
+    color: #333;
+}
+
+/* 第二个框样式 */
+.category-box {
+    padding: 20px;
+    border: 1px solid transparent; /* 边框透明 */
+    margin-top: 30px; /* 第二个框进一步下移 */
+}
+
+.category-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.category-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-box ul li {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.category-box ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.category-box ul li a:hover {
+    color: #ff6666;
+}
+
+
+
+.menu-left {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px; /* Increased width */
+}
+
+.deals-box {
+    padding: 20px;
+    border: 2px solid #ddd; /* Increased border width */
+    border-radius: 10px; /* Increased border radius */
+    margin-top: 20px;
+    background-color: #f9f9f9;
+}
+
+.deals-box h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.deal {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px; /* Increased padding */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.deal-image {
+    width: 50px; /* Reduced image size */
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.deal-info {
+    flex-grow: 1;
+}
+
+.deal h3 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+}
+
+.deal .rating {
+    font-size: 12px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.deal p {
+    font-size: 14px;
+    color: #ff6666;
+    margin: 0;
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+.zhekou{
+    position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+  background-image: url('images/zhongjianbeijn.jpg');
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.offer-right {
+  flex: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 两列布局 */
+  gap: 20px;
+}
+.offer-left {
+  flex: 1;
+  background-color: #f18d43;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.offer-left h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.offer-left p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.offer-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.offer-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.offer-card:hover img {
+  transform: scale(1.1); /* 图片放大 */
+}
+
+.offer-details {
+  padding: 10px;
+  text-align: center;
+}
+
+.offer-details h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.offer-details p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.order-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e85a24;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.order-btn:hover {
+  background-color: #c04b1f;
+}
+
+
+
+
+
+
+
+
+.burger-offer {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+   
+  }
+  .burger-offer h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .burger-offer p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  .burger-offer .order-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff9f1a;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  .burger-offer .order-btn:hover {
+    background-color: #ff7f00;
+  }
+  .cloud {
+  position: absolute;
+  top: 20px; /* 根据需要调整 */
+  right: 20px; /* 根据需要调整 */
+
+  width: 200px; /* 设置图片宽度 */
+  height: 200px; 
+    animation: float 5s infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  .burger-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-top: 20px;
+  }
+
+
+
+
+  main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
+  width: 100%; 
+  padding: 20px 0; 
+  position: relative; /* Ensure other elements are above the video */
+  background-image: url('images/zhongjianbeijn.jpg');
+ 
+}
+
+
+
+.shell {
+  position: relative;
+  width: 60vw;
+  height: 40vw;
+  max-width: 380px;
+  max-height: 250px;
+  margin: 0;
+  color: white;
+  perspective: 1000px;
+  transform-origin: center;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  transform: translateZ(-20vw) rotateY(0);
+  animation: carousel 5s infinite cubic-bezier(0.7, 0, 0.175, 1) forwards;
+}
+
+.item {
+  position: absolute;
+  width: 50vw;
+  height: 30vw;
+  max-width: 300px;
+  max-height: 180px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  background-size: cover;
+  -webkit-box-reflect: below 10px -webkit-linear-gradient(transparent 50%, rgba(255, 255, 255, 0.3));
+}
+
+.item:nth-child(1) {
+  background-image: url(images/bread01.png);
+  transform: rotateY(0) translateZ(20vw);
+}
+
+.item:nth-child(2) {
+  background-image: url(images/bread02.png);
+  transform: rotateY(120deg) translateZ(20vw);
+}
+
+.item:nth-child(3) {
+  background-image: url(images/bread03.png);
+  transform: rotateY(240deg) translateZ(20vw);
+}
+
+@keyframes carousel {
+  0%, 17.5% {
+    transform: translateZ(-20vw) rotateY(0);
+  }
+  27.5%, 45% {
+    transform: translateZ(-20vw) rotateY(-120deg);
+  }
+  55%, 72.5% {
+    transform: translateZ(-20vw) rotateY(-240deg);
+  }
+  82.5%, 100% {
+    transform: translateZ(-20vw) rotateY(-360deg);
+  }
+}
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    /* 当用户手动导航或者 CSSOM scrolling API 触发滚动操作时 */
+    scroll-behavior: smooth; 
+      font-size: 2vmin;
+  
+  }
+  
+
+.daohanglan{
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+}
+  
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+  background: linear-gradient(to bottom, #593223, transparent);
+}
+
+header .logo {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+}
+
+header ul li a:hover,
+header ul li a.active {
+  background: #fff;
+  color: #593223;
+}
+
+/* 整体布局 */
+#are {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 10%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffe5d9 0%, #fff3e0 100%);
+  background-image: url('images/1234.png');
+  
+}
+
+/* 左侧文字部分 */
+.text-content {
+  max-width: 50%;
+  text-align: left;
+  transform: scale(1.2)translateX(60px);
+}
+
+/* 小标签部分 */
+.text-content .tagline {
+  font-size: 1.8rem;
+  color: #ffc064;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* 主标题部分 */
+.text-content .headline {
+  font-size: 6rem; /* 放大标题 */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+  position: relative;
+  animation: bounceIn 1.2s ease-out; /* 加入动画效果 */
+}
+
+/* 主标题的动态效果 */
+.text-content .headline .highlight {
+  font-size: 5rem; /* 比"Ready"稍小 */
+  color: #ffc064;
+  font-weight: 900;
+  position: relative;
+  top: -15px; /* 调整高度形成错落 */
+  left: 25px;
+}
+
+.text-content .headline .bread {
+  font-size: 7rem; /* 加大"bread" */
+  font-weight: 900;
+  color: #ffc064;
+  transform: rotate(-8deg); /* 增强动态感 */
+  display: inline-block;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* 增加阴影 */
+}
+
+/* 描述段落部分 */
+.text-content .description {
+  font-size: 1.4rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  position: relative;
+  animation: slideIn 1.5s ease-in-out;
+
+  /* 特别处理关键词 */
+}
+
+.text-content .description span {
+  color: #ffc064;
+  font-weight: bold;
+  font-size: 1.5rem;
+  animation: popUp 1.3s infinite ease-in-out;
+}
+
+/* 按钮部分 */
+.cta-button {
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+  background: #ffc064;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #333;
+  transform: translateY(-5px);
+}
+
+/* 右侧图片部分 */
+/* 右侧图片部分 */
+/* 右侧图片部分 */
+.atropos-container {
+  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.atropos img.img-3d {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  transform-origin: center;
+  transition: transform 0.2s ease-in-out;
+  transform: scale(1.2)translateX(75px);
+}
+
+.atropos img.img-3d:hover {
+  transform: translateZ(35px) ;
+}
+
+
+
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popUp {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* 按钮样式：将按钮改为图片 */
+header ul li button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-left: -15px;  /* 向左移动按钮 */
+  width: 70px;  /* 按钮宽度 */
+  height: 70px; /* 按钮高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 图片样式：确保图片适当缩小并显示完全 */
+header ul li button img {
+  width: 80%;  /* 图片宽度为按钮宽度的80% */
+  height: 80%; /* 图片高度为按钮高度的80% */
+  object-fit: contain; /* 确保图片显示完全，不会变形 */
+}
+
+/* 彩带容器样式 */
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+}
+
+/* 彩带的小片段样式 */
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0000;
+  animation: confetti-fall 2s infinite;
+}
+
+@keyframes confetti-fall {
+  from {
+    top: -10px;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+
+
+</style>
+<body>
+  
+
+  <header>
+    <a href="#" class="logo">Bread</a>
+    <ul>
+      <!-- 将图片链接改为按钮 -->
+      <li><button id="home-button"><img src="images\wanshengjie.png" alt="Home"></button></li>
+      <li><a href="#" class="active">搜索</a></li>
+      <li><a href="aboutt.html">关于我们</a></li>
+      <li><a href="#">登录中</a></li>
+    </ul>
+  </header>
+  
+  <!-- 音乐播放 -->
+  <audio id="music" src="images\Joker工作室 - The Cursed Sun.ogg" preload="auto"></audio>
+  
+  <!-- 彩带效果 -->
+  <div id="confetti"></div>
+    <section id="are">
+        <!-- 左侧文字部分 -->
+        <div class="text-content">
+          <p class="tagline">Eat Sleep And</p>
+          <h1 class="headline">
+            Ready <br />
+            <span class="highlight">For</span> <span class="bread">BREAD</span>
+          </h1>
+          <p class="description">
+            “Bread”面包店，不仅仅是一家面包店，<span>更是您生活中的美味伴侣</span>，与家人朋友共享美好时光。<br />
+            我们期待您的<span>光临</span>！
+          </p>
+          <button class="cta-button">50% 折扣 现在</button>
+          <audio id="halloween-music" src="halloween-music.mp3" loop></audio>
+        </div>
+      
+        <!-- 右侧图片部分 -->
+        <div class="atropos-container">
+            <div class="atropos my-atropos">
+              <div class="atropos-scale">
+                <div class="atropos-rotate">
+                  <div class="atropos-inner">
+                    <img src="images/xiaoxiong4.png" alt="3D Image" class="img-3d" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+      </section>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+<main id="dibu">
+   
+
+    <div class="shell">
+        <div class="content">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+</main>
+
+<section class="menu" id="menu">
+    <!-- 主容器 -->
+    <div class="menu-left">
+        <!-- Filter Section -->
+        <div class="filter-box">
+            <h2>选择</h2>
+            <!-- Filter by Size -->
+            <div class="filter-section">
+                <h3>选择分量</h3>
+                <ul>
+                    <li><label><input type="checkbox"> 全部(65)</label></li>
+                    <li><label><input type="checkbox"> 一人食(15)</label></li>
+                    <li><label><input type="checkbox"> 二人食(10)</label></li>
+                    <li><label><input type="checkbox"> 三人以上(22)</label></li>
+                </ul>
+            </div>
+            <!-- Filter by Price -->
+            <div class="filter-section">
+                <h3>设置价格范围</h3>
+                <div class="price-slider">
+                    <input type="range" min="12" max="400" value="12" id="price-min">
+                </div>
+                <p>Price: <span id="price-range">$12 - $400</span></p>
+            </div>
+        </div>
+        <!-- Category Section -->
+        <div class="category-box">
+            <h2>CATEGORY</h2>
+            <ul>
+                <li><a href="#">面包 (65)</a></li>
+                <li><a href="#">饼干 (15)</a></li>
+                <li><a href="#">蛋糕 (10)</a></li>
+                <li><a href="#">东方点心 (22)</a></li>
+                <li><a href="#">西方点心 (15)</a></li>
+                <li><a href="#">DIY (10)</a></li>
+                <li><a href="#">其他 (24)</a></li>
+            </ul>
+        </div>
+        <div class="deals-box">
+            <h2>Today's Best Bread</h2>
+            <div class="deal">
+                <img src="images\bread06.png" alt="Patty Buns Burgers" class="deal-image">
+                <div class="deal-info">
+                    <h3>杂粮果仁圆面包</h3>
+                    <div class="rating">4.9 ★★★★★☆ (462)</div>
+                    <p>$10</p>
+                </div>
+            </div>
+            <div class="deal">
+                <img src="images\bread03.png" alt="BBQ Chicken Pizza" class="deal-image">
+                <div class="deal-info">
+                    <h3>烟熏三文鱼可颂</h3>
+                    <div class="rating">4.9 ★★★★★☆ (262)</div>
+                    <p>$15</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="menu-right">
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <div class="key">
+                <input type="text" placeholder="请输入搜索关键词...">
+            </div>
+            <div class="bt">
+                <a href="#">
+                    <i class="iconfont icon-sousuo"></i>
+                </a>
+            </div>
+        </div>
+            
+
+        <div class="menu-content">
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread01.png" alt="">
+                </div>
+               
+                <h2 class="product-name">培根鸡蛋面包</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$10</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread02.png" alt="">
+                </div>
+               
+                <h2 class="product-name">花瓣面包</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$12</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-box" onclick="redirectToLogin()">
+                <div class="product-img">
+                    <img src="images\bread03.png" alt="">
+                </div>
+                
+                <h2 class="product-name">烟熏三文鱼可颂</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$15</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread04.png" alt="">
+                </div>
+                
+                <h2 class="product-name">法式洋葱面包</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$15</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread05.png" alt="">
+                </div>
+                
+                <h2 class="product-name">芝士贝果</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$10</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread06.png" alt="">
+                </div>
+                <h2 class="product-name">杂粮果仁圆面包</h2>
+                <img src="./image/rating_starts.png" alt="">
+               
+                <div class="addToSection">
+                    <span class="price">$10</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread07.png" alt="">
+                </div>
+                
+                <h2 class="product-name">迷你牛角可颂</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$6</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread08.png" alt="">
+                </div>
+                
+                <h2 class="product-name">焦糖核桃面包</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$15</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-box">
+                <div class="product-img">
+                    <img src="images\bread09.png" alt="">
+                </div>
+                
+                <h2 class="product-name">蜂蜜黄油小面包</h2>
+                <img src="./image/rating_starts.png" alt="">
+                
+                <div class="addToSection">
+                    <span class="price">$5</span>
+
+                    <div class="cart-icon">
+
+                        <a href="#"><i class='bx bx-cart'></i></a>
+                        <div class="popup"><p>加入购物车</p> <i class='bx bx-heart'></i></div>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            
+            
+            
+        </div>
+
+        <div class="menu-next">
+            <button>1</button>
+            <button>2</button>
+            <p>下一页...</p>
+            <button><i class='bx bx-right-arrow-alt'></i></button>
+
+        </div>
+
+       
+          
+     </section>
+<section class="zhekou" id="zhekou">
+    <div class="burger-offer">
+        <h1>惊喜！惊喜！惊喜！重大惊喜！</h1>
+        <p>在“Bread”面包店，我们相信每一餐都应该是一次美妙的享受。为了感谢您一直以来的支持与厚爱，我们特别推出限时优惠活动，让您在享受美味的同时，也能享受到实惠的价格！</p>
+        
+        <img src="sale-shape-red.png" alt="Sale" class="cloud">
+        <img src="images\xiaodangao.png" alt="Burger" class="burger-image">
+      </div>
+      <div class="container">
+        <!-- Left Section -->
+        <div class="offer-left">
+          <h2>50% 折扣 现在!</h2>
+          <p>从即日起至本周末，凡到店消费的顾客，均可享受指定美味佳肴半价优惠！</p>
+          <p>一起在“Bread”面包店享受一个温馨的用餐时光吧!</p>
+          <a  class="order-btn">享受吧！</a>
+        </div>
+        
+        <!-- Right Section -->
+        <div class="offer-right">
+          <div class="offer-card">
+            <img src="images\bread02.png" alt="Delicious Pizza">
+            <div class="offer-details">
+              <h3>花瓣面包</h3>
+              <p>50% 折扣 现在</p>
+              <a href="pizza-offer.html" class="order-btn">购  买</a>
+            </div>
+          </div>
+          <div class="offer-card">
+            <img src="images\bread03.png" alt="American Burger">
+            <div class="offer-details">
+              <h3>烟熏三文鱼可颂</h3>
+              <p>50% 折扣 现在</p>
+              <a href="loginn.html" class="order-btn">购  买</a>
+            </div>
+          </div>
+          <div class="offer-card">
+            <img src="images\bread04.png" alt="Tasty Buzzed Pizza">
+            <div class="offer-details">
+              <h3>法式洋葱面包</h3>
+              <p>50% 折扣 现在</p>
+              <a href="buzzed-pizza-offer.html" class="order-btn">购  买</a>
+            </div>
+          </div>
+          <div class="offer-card">
+            <img src="images\bread05.png" alt="Another Delicious Pizza">
+            <div class="offer-details">
+              <h3>芝士贝果</h3>
+              <p>50% 折扣 现在</p>
+              <a href="another-pizza-offer.html" class="order-btn">购  买</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+     
+</section>
+
+<script src="https://unpkg.com/atropos/atropos.min.js"></script>
+ 
+    
+   <!-- Swiper js -->
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+   <!-- Scroll Relveal -->
+
+   <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+<!-- Main javascript link  -->
+<script src="./main.js"></script>
+<script>
+  // 搜索框box元素
+  var box = document.querySelector('menu-left.search-box');
+
+  // 增加监听mouseover事件
+  box.addEventListener('mouseover', () => {
+      // 增加active样式
+      box.classList.add('active');
+  });
+
+  // 解决点击搜索框会触发 body.click事件问题
+  box.addEventListener('click', (e) => {
+      // 防止事件冒泡
+      e.stopPropagation();
+  });
+
+  document.body.addEventListener('click', () => {
+      // 移除active样式
+      box.classList.remove('active');
+  });
+</script>
+<script>document.querySelectorAll('.order-btn').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      // 这里可以根据 `href` 的值跳转页面
+      const href = button.getAttribute('href');
+      window.location.href = href;
+    });
+  });
+
+
+
+  document.querySelector('.cta-button').addEventListener('click', function() {
+    document.querySelector('a[href="#zhekou"]').click();
+  });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/atropos"></script>
+<script>
+  // 初始化 Atropos
+  const myAtropos = Atropos({
+    el: '.my-atropos', // 绑定到 Atropos 容器
+    activeOffset: 50, // 最大偏移，增强 3D 旋转感
+    shadow: true, // 启用动态阴影效果
+    rotateXMax: 35, // 增加 X 轴旋转幅度
+    rotateYMax: 35, // 增加 Y 轴旋转幅度
+    rotateTouch: true, // 允许触控设备旋转
+    highlight: true, // 启用高光反射效果
+  });
+</script>
+<script>
+    function redirectToLogin() {
+        window.location.href = 'loginn.html';
+    }
+    </script>
+<script>
+  document.querySelector('.cta-button').addEventListener('click', function() {
+    var zhekouSection = document.getElementById('zhekou');
+    // 平滑滚动到 zhekou 容器
+    zhekouSection.scrollIntoView({
+        behavior: 'smooth',  // 平滑滚动
+        block: 'start'       // 滚动到容器顶部
+    });
+});
+
+</script>
+<script>
+  window.onload = function() {
+      var audio = document.getElementById('myAudio');
+      audio.play();
+  }
+</script>
+<script>
+ document.getElementById("home-button").addEventListener("click", function() {
+  var music = document.getElementById("music");
+
+  // 如果音乐正在播放，暂停它；如果没有播放，则播放它
+  if (music.paused) {
+    music.play();  // 播放音乐
+    triggerConfetti();  // 展示彩带效果
+  } else {
+    music.pause();  // 暂停音乐
+  }
+});
+
+function triggerConfetti() {
+  var confettiContainer = document.getElementById("confetti");
+  confettiContainer.style.display = "block";
+
+  // 生成彩带小片段
+  for (let i = 0; i < 100; i++) {
+    let confettiPiece = document.createElement("div");
+    confettiPiece.classList.add("confetti-piece");
+    confettiPiece.style.left = Math.random() * 100 + "%"; // 随机位置
+    confettiPiece.style.animationDuration = Math.random() * 2 + 2 + "s"; // 随机落下时间
+    confettiContainer.appendChild(confettiPiece);
+  }
+
+  
+}
+
+
+</script>
+
+</body>

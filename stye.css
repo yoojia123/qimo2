@@ -1,0 +1,365 @@
+
+    /* 这是引入了一些字体 */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap'); 
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  /* 当用户手动导航或者 CSSOM scrolling API 触发滚动操作时 */
+  scroll-behavior: smooth; 
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #ffd495;
+ display: flex;
+ justify-content: center;
+ align-items:top;
+ min-height: 100vh;
+ user-select: none;
+ overflow: hidden;
+ background-image: url('images/123beijin.jpg');
+ background-size: cover; /* 使背景图片覆盖整个屏幕 */
+ background-position: center; /* 背景图片居中显示 */
+ background-repeat: no-repeat; /* 防止背景图片重复 */
+}
+
+
+.daohanglan{
+  position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+padding: 30px 100px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 10000;
+}
+
+header {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+padding: 30px 100px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 10000;
+background: linear-gradient(to bottom, #593223, transparent);
+}
+
+header .logo {
+color: #fff;
+font-weight: 700;
+text-decoration: none;
+font-size: 2em;
+text-transform: capitalize;
+letter-spacing: 2px;
+}
+
+header ul {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+header ul li {
+list-style: none;
+margin-left: 20px;
+}
+
+header ul li a {
+text-decoration: none;
+padding: 6px 15px;
+color: #fff;
+border-radius: 20px;
+}
+
+header ul li a:hover,
+header ul li a.active {
+background: #fff;
+color: #593223;
+}
+    section.sectionlogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    /* background-color: aquamarine; */
+    
+    background: url('image.webp') no-repeat;
+    background-position: center;
+    background-size: cover;
+    }
+    
+    .form-box {
+    position: relative;
+    width: 400px;
+    height: 450px;
+
+    /* background-color: red; */
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5%;
+    backdrop-filter: blur(5px);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    }
+    .form-box::before{
+            position: absolute;
+            border-radius: 5%;
+            width: 400px;
+            height: 450px;
+            border: 2px solid white;
+            top:0;
+            right: 0;
+            box-sizing: border-box;
+            content: "";
+            clip-path: inset(0 130px 250px 0);
+            animation: ch 6s infinite;     
+    }
+    
+    @keyframes ch{
+    0%,100%{
+            clip-path: inset(0 0 368px 0);
+    }
+    25%{
+            clip-path: inset(0 258px 0 0);
+    }
+    50%{
+            clip-path: inset(368px 0 0 0);
+    }
+    75%{
+            clip-path: inset(0 0 0 258px);
+    }
+    }
+    h2 {
+    font-size: 32px;
+    color: #fff;
+    text-align: center;
+    }
+    
+    .inputbox {
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+    }
+    
+    .inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+    }
+
+    input:focus ~ label,
+    input:valid ~ label {
+top: -5px;
+}
+   
+    
+    .inputbox input {
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+    }
+    
+    .inputbox ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 18px;
+    top: 20px;
+    }
+    
+    .forget {
+    margin: -15px 0 15px;
+    font-size: 14px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    }
+    
+    .forget label input {
+    margin-right: 3px;
+    }
+    
+    .forget a {
+    text-decoration: none;
+    color: #fff;
+    }
+    
+    .forget label a:hover {
+    text-decoration: underline;
+    }
+    
+    button {
+            width: 100%;
+            height: 40px;
+            border-radius: 40px;
+            background: #fff;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            }
+ button#login-btn{
+    color: #ff6666;
+    text-decoration: none;
+ }
+    
+    .register {
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+    }
+    
+    .register p a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    }
+    
+    .register p a:hover {
+    text-decoration: underline;
+    }
+
+    .item {
+        position: absolute;
+        font-size: 24px;
+        aspect-ratio: 1/1;
+        color: #fff;
+        animation: falling 10s linear forwards;
+        transform-origin: top;
+      }
+      
+      /* 动画定义 */
+      @keyframes falling {
+        0% {
+          transform: translateY(0vh) scale(0); /* 从顶部开始缩放 */
+        }
+        10% {
+          transform: translateY(0vh) scale(1); /* 显示并开始下落 */
+        }
+        55% {
+          transform: translateY(calc(100vh - 100%)) scale(1); /* 下落到底部 */
+        }
+        100% {
+          transform: translateY(calc(100vh - 100%)) scale(1); /* 保持在底部 */
+        }
+      }
+      /* 底部堆积区域 */
+/* 底部堆积区域 */
+#bottom-area {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* 底部区域的高度 */
+    background-color: transparent; /* 可选：设置透明或其他背景 */
+    pointer-events: all;
+  }
+  
+  /* 鼠标悬停时显示的图片 */
+  #hover-image {
+    position: fixed;
+    bottom: 120px; /* 图片初始位置 */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%);
+    width: 100px; /* 图片大小 */
+    height: auto;
+    display: none; /* 默认隐藏 */
+    pointer-events: none; /* 确保不会干扰鼠标操作 */
+    transition: transform 0.1s ease-out; /* 轻微的平滑移动效果 */
+  }
+  
+  /* 碰撞消失的动画效果 */
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.5;
+      transform: scale(1.5);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+  
+  .item img {
+    animation: none;
+  }
+  
+  /* 按钮样式：将按钮改为图片 */
+header ul li button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-left: -15px;  /* 向左移动按钮 */
+  width: 70px;  /* 按钮宽度 */
+  height: 70px; /* 按钮高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 图片样式：确保图片适当缩小并显示完全 */
+header ul li button img {
+  width: 80%;  /* 图片宽度为按钮宽度的80% */
+  height: 80%; /* 图片高度为按钮高度的80% */
+  object-fit: contain; /* 确保图片显示完全，不会变形 */
+}
+
+/* 彩带容器样式 */
+#confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  display: none;
+}
+
+/* 彩带的小片段样式 */
+.confetti-piece {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0000;
+  animation: confetti-fall 2s infinite;
+}
+
+@keyframes confetti-fall {
+  from {
+    top: -10px;
+  }
+  to {
+    top: 100%;
+  }
+}
